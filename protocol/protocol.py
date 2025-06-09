@@ -158,7 +158,7 @@ if __name__ == '__main__':
 
 
     parser = argparse.ArgumentParser(description='Universal Protocol Generator')
-    parser.add_argument('--template', type=str, default='./template.yaml', help='Template YAML file')
+    parser.add_argument('--template', type=str, default='./protocol.yaml', help='Template YAML file')
     args = parser.parse_args()
 
     pathManager.make_protocol_directory()
