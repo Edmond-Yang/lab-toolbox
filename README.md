@@ -13,9 +13,9 @@ It's a toolbox for training and testing remote PPG algorithms, including data pr
 ## Current Version
 - **Current Version**: 1.0
 - **Last Updated**: 2025-06-09
-- **Author**: [Your Name](Edmond Yang)
-- **License**: [MIT License](https://opensource.org/license/mit/)
-- **GitHub Repository**: [Lab-Toolbox]()
+- **Author**: [Edmond Yang](https://github.com/Edmond-Yang)
+- **License**: None
+- **GitHub Repository**: [Lab-Toolbox](https://github.com/Edmond-Yang/lab-toolbox)
 
 ## Version History
 - **1.0** [2025-06-09]: Initial release with basic functionality for training and testing remote PPG algorithms.
