@@ -1,0 +1,118 @@
+protocols:
+#    -   name: "VIPL_fold1"
+#        datasets:
+#            -   name: "VIPL"
+#                filters:
+#                    - type: "+"
+#                      text: ["fold1"]
+#    -   name: "UBFC_train"
+#        datasets:
+#            -   name: "UBFC"
+#                subject_prefix: "subject"
+#                subject_pattern_prefix_zero: "0"
+#                subject_pattern: "-3,12,13,34,47"
+#    -   name: "UBFC_test"
+#        datasets:
+#            -   name: "UBFC"
+#                subject_prefix: "subject"
+#                subject_pattern_prefix_zero: "0"
+#                subject_pattern: "+3,12,13,34,47"
+#
+#    -   name: "Car_all"
+#        datasets:
+#            -   name: "MR_NIRP"
+
+    -   name: "Car_less"
+        datasets:
+            -   name: "MR_NIRP"
+                filters:
+                    - type: "+"
+                      text: ["940"]
+
+
+
+#    -   name: "PURE_train"
+#        datasets:
+#            -   name: "PURE"
+#                subject_prefix: ""
+#                subject_pattern_prefix_zero: "2"
+#                subject_pattern: "+1-7,9,10"
+#                subject_postfix: "_"
+#
+#    -   name: "PURE_test"
+#        datasets:
+#            -   name: "PURE"
+#                subject_prefix: ""
+#                subject_pattern_prefix_zero: "2"
+#                subject_pattern: "+8"
+#                subject_postfix: "_"
+
+#    -   name: "Cross_CPU"
+#        datasets:
+#            -   name: "PURE"
+#            -   name: "COHFACE"
+#            -   name: "UBFC"
+#
+#    -   name: "UBFC_all"
+#        datasets:
+#            -   name: "UBFC"
+#
+#    -   name: "Car"
+#        datasets:
+#            -   name: "MR_NIRP"
+#                subject_prefix: "subject"
+#                subject_pattern_prefix_zero: "0"
+#                subject_pattern: "+0-9"
+#                subject_postfix: "_"
+#                filters:
+#                    - type: "+"
+#                      text: ["940"]
+#                    - type: "-"
+#                      text: ["975"]
+
+
+# Example Usage
+#protocols:
+#    -   name: "VIPL_fold1"
+#        datasets:
+#            -   name: "VIPL"
+#                filters:
+#                    - type: "+"
+#                      text: ["fold1"]
+#
+#    -   name: "PURE_all"
+#        datasets:
+#            -   name: "PURE"
+#
+#    -   name: "Cross_CPU"
+#        datasets:
+#            -   name: "PURE"
+#            -   name: "COHFACE"
+#            -   name: "UBFC"
+#
+#    -   name: "Car"
+#        datasets:
+#            -   name: "MR_NIRP"
+#                subject_prefix: "subject"
+#                subject_pattern_prefix_zero: "0"
+#                subject_pattern: "+0-9"
+#                subject_postfix: "_"
+#                filters:
+#                    - type: "+"
+#                      text: ["940"]
+#                    - type: "-"
+#                      text: ["975"]
+
+
+## Leave-one-out協議
+#leave_one_out:
+#    - base_name: "Indoor_Leave_One_Out"
+#      datasets:
+#          - name: "MR-NIRP_indoor"
+#            subject_range: [1, 8]  # 可選，預設為 [1, 8]
+#            filters:
+#                - ["+", ["940"]]
+#          - name: "Tokyo"
+#            subject_range: [1, 5]
+#            filters:
+#                - ["+", ["rgb"]]

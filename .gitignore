@@ -1,0 +1,19 @@
+# cache files
+__pycache__/
+*.py[cod]
+
+# Log files
+logger/
+*/logger/
+
+# Environment variables
+.env
+
+# Visualization output
+visualization/*
+
+# macOS specific
+.DS_Store
+
+# configuration files
+protocol.yaml
