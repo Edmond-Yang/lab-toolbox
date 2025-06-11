@@ -17,3 +17,5 @@ visualization/*
 
 # configuration files
 protocol.yaml
+
+train_and_test.sh

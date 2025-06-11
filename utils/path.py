@@ -2,7 +2,7 @@
 
 import os
 
-from logger import *
+from .logger import *
 from enum import Enum
 from pathlib import Path
 from dotenv import load_dotenv
