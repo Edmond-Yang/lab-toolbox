@@ -47,7 +47,7 @@ if __name__ == '__main__':
     loader_cfg = LoaderConfig(
         batch_size=args.batch_size,
         shuffle=True,
-        num_workers=16,
+        num_workers=args.num_workers,
         pin_memory=False,
     )
 
