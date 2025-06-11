@@ -76,8 +76,8 @@ class HDF5Saver:
         for dataset in datasets:
             pathManager.make_preload_directory(dataset)
 
-        max_workers = 6
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        num_workers = 6
+        with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
             future_to_vid = {
                 executor.submit(self._process_video, vid): vid
                 for vid in videos
@@ -333,8 +333,8 @@ class VideoDataset(Dataset):
     def _preload_data(self) -> Optional[Dict[Tuple[str], Dict[str, torch.Tensor]]]:
         if self.config.preload:
             data = dict()
-            max_workers = 4
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            num_workers = 4
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
                 future_to_preload = {
                     executor.submit(self._preload_video, video, path): video
                     for video, path in self.video_path.items()

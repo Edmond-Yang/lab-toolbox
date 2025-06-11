@@ -1,4 +1,7 @@
+import os
 import argparse
+
+from dotenv import load_dotenv
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -18,9 +21,11 @@ def get_args():
     # setting
     parser.add_argument("--epoch", type=int, default=100, help="Epoch")
     parser.add_argument("--batch_size", type=int, default=3, help="Batch Size")
+    parser.add_argument("--num_workers", type=int, help="Batch Size")
 
     return parser.parse_args()
 
+load_dotenv()
 args = get_args()
 
 if args.test is not None:
@@ -39,3 +44,6 @@ if args.model == "foundation-model":
 if args.model == "pos" or args.model == "chrom":
     args.epoch = 1
     args.batch_size = 1
+
+if args.num_workers is None:
+    args.num_workers = int(os.environ.get("NUM_WORKERS", 16))
