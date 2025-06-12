@@ -32,13 +32,13 @@ if args.test is not None:
     args.batch_size = 10
 
 if args.model == "sinc":
+    args.batch_size = 4
     args.size = 64
     args.epoch = 200
 
 if args.model == "foundation-model":
     args.size = 128
     args.epoch = 400
-    args.batch_size = 15
     args.length = 30
 
 if args.model == "pos" or args.model == "chrom":

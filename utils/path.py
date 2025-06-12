@@ -20,7 +20,7 @@ class DatasetName(Enum):
     FaceForensics_Youtube = 'FaceForensics-Youtube'
     FaceForensics_Actor = 'FaceForensics-Actor'
 
-load_dotenv()
+load_dotenv('.env')
 
 # PathManager class to manage dataset paths
 class PathManager:

@@ -26,9 +26,9 @@ test_dict=(
 #        ["VIPL_fold6"]="VIPL_fold5"
 #        ["COHFACE_all"]="COHFACE_test"
 #        ["COHFACE_test"]="COHFACE_all"
-        ["IT_all"]="PURE_all"
-        ["PURE_all"]="VIPL_fold1"
-        ['UBFC_all']="VIPL_fold1"
+#        ["IT_all"]="PURE_all"
+#        ["PURE_all"]="VIPL_fold1"
+#        ['UBFC_all']="VIPL_fold1"
 )
 
 model_name="foundation-model"
@@ -36,7 +36,7 @@ model_name="foundation-model"
 
 for model_name in "sinc"
 do
-    for train in "IT_all"
+    for train in "Car_GarSti_5fold_1,Car_GarSti_5fold_2,Car_GarSti_5fold_3,Car_GarSti_5fold_4" "Car_GarSti_5fold_5,Car_GarSti_5fold_2,Car_GarSti_5fold_3,Car_GarSti_5fold_4" "Car_GarSti_5fold_1,Car_GarSti_5fold_5,Car_GarSti_5fold_3,Car_GarSti_5fold_4" "Car_GarSti_5fold_1,Car_GarSti_5fold_2,Car_GarSti_5fold_5,Car_GarSti_5fold_4" "Car_GarSti_5fold_1,Car_GarSti_5fold_2,Car_GarSti_5fold_3,Car_GarSti_5fold_5"
     do
         if [[ $test == *"Car_all"* ]]; then
             echo python3 train.py --model $model_name --train "$train" --epoch $EPOCH
@@ -46,16 +46,16 @@ do
             python3 -u train.py --model $model_name --train "$train" --epoch $EPOCH  --preload
         fi
 
-        for test in ${test_dict[$train]}
-        do
-            if [[ $test == *"Car_all"* ]]; then
-                echo python3 test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH
-                python3 -u test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH
-            else
-                echo python3 test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH  --preload
-                python3 -u test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH  --preload
-            fi
-        done
+#        for test in ${test_dict[$train]}
+#        do
+#            if [[ $test == *"Car_all"* ]]; then
+#                echo python3 test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH
+#                python3 -u test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH
+#            else
+#                echo python3 test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH  --preload
+#                python3 -u test.py --model $model_name --train "$train" --test "$test" --epoch $EPOCH  --preload
+#            fi
+#        done
 
     done
 done

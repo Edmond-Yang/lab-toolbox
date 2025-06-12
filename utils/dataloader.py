@@ -45,7 +45,6 @@ class LoaderConfig:
     shuffle: bool = True
     num_workers: int = 16
     pin_memory: bool = False
-    old_config: Optional[str] = None
 
 
 @dataclass
@@ -414,29 +413,29 @@ class VideoDataset(Dataset):
 
 def get_loader_from_protocol(protocol: str, config: Optional[DatasetConfig] = None,
                              loader_config: Optional[LoaderConfig] = None, ) -> DataLoader:
-    Logger.info(f"Protocol: {protocol}")
+    # Support for multiple protocol files
 
-    protocol_path, if_exist = pathManager.get_protocol_path(protocol)
+    protocols = protocol.split(',')
+    Logger.info(f"Protocol: " + ', '.join(protocols))
 
-    if not if_exist:
-        raise FileNotFoundError(f"Protocol file not found at: {protocol_path}")
+    videos = []
 
-    if config is None:
-        config = DatasetConfig()
-    if loader_config is None:
-        loader_config = LoaderConfig()
+    for p in protocols:
 
-    with open(protocol_path, "r") as f:
-        lines = f.readlines()
+        p = p.strip()
+        path, if_exist = pathManager.get_protocol_path(p)
 
-    old_config = loader_config.old_config
-    if old_config is not None and old_config != "VIPL":
-        lines = [f"{old_config},{line.strip()}" for line in lines]
+        if not if_exist:
+            Logger.error(f"Protocol file not found: {p}")
+            raise FileNotFoundError(f"Protocol file not found: {p}")
 
-    videos = [
-        tuple(parts)
-        for line in lines if (parts := line.strip().split(","))
-    ]
+        with open(path, "r") as f:
+            lines = f.readlines()
+
+        videos.extend([
+            tuple(parts)
+            for line in lines if (parts := line.strip().split(","))
+        ])
 
     dataset = VideoDataset(videos=videos, config=config)
     dataloader = DataLoader(dataset, batch_size=loader_config.batch_size, shuffle=loader_config.shuffle,
