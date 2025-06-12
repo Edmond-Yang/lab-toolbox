@@ -1,6 +1,5 @@
 import os
 import sys
-os.environ.setdefault("PREPROCESSED_DIR", "/mnt/disk1")
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -66,7 +65,6 @@ class ProtocolGenerator:
         subject_pattern = subject_pattern[1:]
 
         _subject = list()
-        print(subject_pattern_prefix_zero)
 
         for part in subject_pattern.split(','):
             if '-' in part:
@@ -117,8 +115,6 @@ class ProtocolGenerator:
             subject = self._parse_subject(d)
             filter.extend(subject)
 
-            print(f"Dataset: {name}, Filter: {filter}")
-
             # generate command
             commands = generate_command(filter)
 
@@ -143,6 +139,7 @@ class ProtocolGenerator:
 
             files = self._get_all_matched_videos(datasets)
             Logger.info(f"Protocol {name}: Found {len(files)} videos")
+            print('-' * 50)
 
             # Write the protocol
             protocol_file, _ = pathManager.get_protocol_path(name)
