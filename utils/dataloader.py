@@ -437,6 +437,9 @@ def get_loader_from_protocol(protocol: str, config: Optional[DatasetConfig] = No
             for line in lines if (parts := line.strip().split(","))
         ])
 
+    # filter out empty or duplicate entries
+    videos = list(set(filter(lambda x: len(x) > 0, videos)))
+
     dataset = VideoDataset(videos=videos, config=config)
     dataloader = DataLoader(dataset, batch_size=loader_config.batch_size, shuffle=loader_config.shuffle,
                             num_workers=loader_config.num_workers)

@@ -8,6 +8,7 @@ logger/
 
 # Environment variables
 .env
+*/.env
 
 # Visualization output
 visualization/*

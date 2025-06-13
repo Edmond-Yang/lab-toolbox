@@ -32,7 +32,7 @@ if args.test is not None:
     args.batch_size = 10
 
 if args.model == "sinc":
-    args.batch_size = 4
+    args.batch_size = 10
     args.size = 64
     args.epoch = 200
 
